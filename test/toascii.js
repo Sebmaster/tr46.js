@@ -1,4 +1,4 @@
-/* eslint-env node, mocha */
+/* eslint-env node, jest, jasmine */
 "use strict";
 
 const assert = require("assert");
@@ -32,6 +32,6 @@ describe("ToASCII", () => {
       description = ` (${testCase.comment})`;
     }
 
-    specify(description, testToASCII(testCase));
+    test(description, testToASCII(testCase));
   }
 });

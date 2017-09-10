@@ -1,4 +1,4 @@
-/* eslint-env node, mocha */
+/* eslint-env node, jest, jasmine */
 "use strict";
 
 const assert = require("assert");
@@ -60,7 +60,7 @@ function testConversion(test) {
     // The `this.skip()` line below will show the entire test is skipped in Mocha's output, but in fact toASCII is still
     // tested above (and an error will be thrown if toASCII breaks).
     if (test[2].trim() === "[A4_2]") {
-      this.skip(); // eslint-disable-line no-invalid-this
+      pending();
       return;
     }
 
@@ -93,7 +93,7 @@ for (const l of lines) {
 }
 
 describe("IdnaTest.txt", () => {
-  for (const test of testCases) {
-    it("Converting <" + test[1] + "> with type " + test[0], testConversion(test));
+  for (const spec of testCases) {
+    test("Converting <" + spec[1] + "> with type " + spec[0], testConversion(spec));
   }
 });
